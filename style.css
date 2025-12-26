@@ -10,7 +10,8 @@ body {
 
 .callout {
   position: absolute;
-  font-size: clamp(32px, 8vw, 50px); /* S'adapte à l'écran */
+  /* clamp(taille-min, taille-adaptative, taille-max) */
+  font-size: clamp(50px, 8vw, 80px); /* S'adapte à l'écran */
   top: 52%;
   left: 50%;
   font-weight: 900;
@@ -24,7 +25,7 @@ body {
 
 .subtitle {
   position: absolute;
-  font-size: clamp(16px, 4vw, 20px); /* S'adapte à l'écran */
+  font-size: clamp(24px, 4vw, 34px); /* S'adapte à l'écran */
   top: 52%;
   left: 50%;
   margin-top: 50px;
