@@ -173,3 +173,33 @@ body {
   z-index: 0;
   background: linear-gradient(105deg, #ff95ec 0%, #ff59e2 6%, #ff00d3 19%, red 72%, black 88%);
 }
+
+.cover-image {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 2px; /* Coins arrondis */
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5); /* Ombre pour le relief */
+  z-index: 998; /* Juste en dessous du texte */
+  opacity: 0; /* Invisible au départ */
+  pointer-events: none;
+}
+
+/* Responsive pour mobile */
+@media (max-width: 768px) {
+  .cover-image {
+    width: 350px;
+    height: 350px;
+  }
+}
+
+@media (max-width: 480px) {
+  .cover-image {
+    width: 200px;
+    height: 200px;
+  }
+}
