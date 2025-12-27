@@ -10,6 +10,8 @@ const textCallout = document.querySelector(".callout");
 const textSub = document.querySelector(".subtitle");
 const coverImage = document.querySelector(".cover-image");
 const songTitle = document.querySelector(".song-title");
+const coverImage2 = document.querySelector(".cover-image-2");
+const songTitle2 = document.querySelector(".song-title-2");
 
 var tl = gsap.timeline({ repeat: -1 });
 
@@ -361,6 +363,54 @@ function addItemsToTimeline() {
       );
     }
   });
+
+  // ===== ANIMATION DU DEUXIÈME COVER ET TITRE =====
+  if (coverImage2 && songTitle2) {
+    // Apparition du deuxième cover - ajustez le timing pour synchroniser
+    tl.fromTo(
+      [coverImage2, songTitle2],
+      {
+        opacity: 0,
+        scale: 0.5,
+        rotation: -180
+      },
+      {
+        opacity: 1,
+        scale: 1,
+        rotation: 0,
+        duration: 1,
+        ease: "back.out(1.7)"
+      },
+      15.5 // AJUSTEZ CE NOMBRE : essayez 13, 14, 15, 16 jusqu'à ce que ça colle parfaitement
+    );
+
+    // Légère rotation pendant qu'ils sont visibles
+    tl.to(
+      [coverImage2, songTitle2],
+      {
+        rotation: 3,
+        duration: 2,
+        ease: "sine.inOut",
+        yoyo: true,
+        repeat: 2
+      },
+      ">"
+    );
+
+    // Disparition du deuxième cover
+    tl.to(
+      [coverImage2, songTitle2],
+      {
+        opacity: 0,
+        scale: 1.5,
+        rotation: 180,
+        duration: 1,
+        ease: "power2.in"
+      },
+      "+=0"
+    );
+  }
+  // ===== FIN ANIMATION DEUXIÈME COVER =====
 } // ← dernière accolade de addItemsToTimeline()
 
 /* ===========================
@@ -369,8 +419,8 @@ function addItemsToTimeline() {
 
 const audio = document.getElementById("bgMusic");
 
-const startTime = 10;  // Tempo du début du morceau
-const endTime = 37;    // Tempo de fin du morceau
+const startTime = 10;
+const endTime = 39;
 
 // Sécurité si l'audio existe bien
 if (audio) {
