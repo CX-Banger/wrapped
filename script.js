@@ -8,6 +8,7 @@ let elHeight = window.innerHeight / numberOfPanels;
 let elWidth = window.innerWidth / numberOfPanels;
 const textCallout = document.querySelector(".callout");
 const textSub = document.querySelector(".subtitle");
+const coverImage = document.querySelector(".cover-image");
 
 var tl = gsap.timeline({ repeat: -1 });
 
@@ -66,7 +67,6 @@ function addItemsToTimeline() {
   );
 
   //text exit
-
   tl.to(
     [textCallout, textSub],
     {
@@ -78,11 +78,60 @@ function addItemsToTimeline() {
     4
   );
 
+  // ===== ANIMATION DE L'IMAGE COVER =====
+  if (coverImage) {
+    // Apparition de l'image au moment de la mosaïque
+    tl.fromTo(
+      coverImage,
+      {
+        opacity: 0,
+        scale: 0.5,
+        rotation: -180
+      },
+      {
+        opacity: 1,
+        scale: 1,
+        rotation: 0,
+        duration: 1,
+        ease: "back.out(1.7)"
+      },
+      5.5 // Timing d'apparition
+    );
+
+    // Légère rotation pendant qu'elle est visible
+    tl.to(
+      coverImage,
+      {
+        rotation: 3,
+        duration: 2,
+        ease: "sine.inOut",
+        yoyo: true,
+        repeat: 2
+      },
+      ">"
+    );
+
+    // Disparition de l'image
+    tl.to(
+      coverImage,
+      {
+        opacity: 0,
+        scale: 1.5,
+        rotation: 180,
+        duration: 1,
+        ease: "power2.in"
+      },
+      "+=2"
+    );
+  }
+  // ===== FIN ANIMATION IMAGE =====
+
   panels.forEach((panel, i) => {
     const stopPosition = 100 - i * 1;
     const wi = window.innerWidth - elWidth * (12 - i) + elWidth;
     const he = window.innerHeight - elHeight * (12 - i) + elHeight;
     const wi8 = window.innerWidth - elWidth * (8 - i) + elWidth;
+    
     // initial rotation
     tl.fromTo(
       panel,
@@ -226,8 +275,6 @@ function addItemsToTimeline() {
         },
         ">"
       );
-      
-      
     });
 
     if (i == 0) {
