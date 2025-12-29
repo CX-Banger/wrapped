@@ -8,6 +8,7 @@ let elHeight = window.innerHeight / numberOfPanels;
 let elWidth = window.innerWidth / numberOfPanels;
 const textCallout = document.querySelector(".callout");
 const textSub = document.querySelector(".subtitle");
+const wrappedLogo = document.querySelector(".wrapped-logo");
 const coverImage = document.querySelector(".cover-image");
 const songTitle = document.querySelector(".song-title");
 const coverImage2 = document.querySelector(".cover-image-2");
@@ -27,9 +28,9 @@ addItemsToTimeline();
 
 //GSAP animations are thrown inside here just to make it easier to call them again on resize
 function addItemsToTimeline() {
-  //text animation
+  //text animation - Logo et Wrapped ensemble
   tl.fromTo(
-    textCallout,
+    [wrappedLogo, textCallout],
     {
       left: "150%"
     },
@@ -43,7 +44,7 @@ function addItemsToTimeline() {
   );
 
   tl.to(
-    textCallout,
+    [wrappedLogo, textCallout],
     {
       y: "-60px",
       delay: 3,
@@ -69,9 +70,9 @@ function addItemsToTimeline() {
     0
   );
 
-  //text exit
+  //text exit - Logo et textes sortent ensemble
   tl.to(
-    [textCallout, textSub],
+    [wrappedLogo, textCallout, textSub],
     {
       left: "-150%",
       ease: "sine.in",
