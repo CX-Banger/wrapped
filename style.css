@@ -240,7 +240,7 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  margin-top: 185px;
+  margin-top: 205px; /* Augmenté pour plus d'espace sous le cover + nom circulaire */
   color: #ffffff;
   font-size: 32px;
   font-weight: 900;
@@ -278,12 +278,12 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  margin-top: 185px;
+  margin-top: 200px; /* Augmenté pour être plus bas sous le cover */
   color: #ffffff;
   font-size: 48px;
   font-weight: 900;
+  font-style: italic;
   text-align: center;
-  font-style: italic; /* Style italique comme Brawl Stars */
   z-index: 998;
   opacity: 0;
   pointer-events: none;
@@ -402,12 +402,12 @@ body {
   }
 
   .artist-name-circle {
-    width: 270px;
-    height: 270px;
+    width: 260px;
+    height: 260px;
   }
 
   .artist-name-circle text {
-    font-size: 15px;
+    font-size: 11px;
     letter-spacing: 1px;
   }
 
